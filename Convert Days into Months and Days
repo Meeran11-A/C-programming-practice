@@ -1,0 +1,11 @@
+#include <stdio.h>
+int main() 
+{
+    int no., months, days;
+    scanf("%d", &no.);
+    months = no. / 30;         
+    days = no. % 30;
+    
+    printf("%d days = %d months and %d days\n", a, months,days);
+    return 0;
+}
