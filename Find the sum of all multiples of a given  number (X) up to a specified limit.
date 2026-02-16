@@ -1,0 +1,11 @@
+#include<stdio.h> 
+int main() 
+{  
+int x, limit, i, sum = 0; 
+printf("Enter X and Limit: ");  
+scanf("%d%d", &x, &limit); 
+for(i = 1; i <= limit; i++) { if(i % x == 0) sum = sum + i; 
+}  
+printf("Sum = %d", sum);  
+return 0;  
+}
