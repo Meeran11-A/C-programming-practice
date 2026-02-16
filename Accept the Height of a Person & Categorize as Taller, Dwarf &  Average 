@@ -1,0 +1,13 @@
+#include<stdio.h> 
+int main() 
+{  
+float height; 
+printf("Enter height in cm: ");  
+scanf("%f", &height); 
+if(height < 150) 
+printf("Dwarf");  
+else if(height <= 180)  
+printf("Average"); 
+else printf("Taller");  
+return 0; 
+}
