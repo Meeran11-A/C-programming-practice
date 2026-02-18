@@ -1,0 +1,12 @@
+#include <stdio.h>
+int main() {
+    int year;
+    printf("Enter a year: ");
+    scanf("%d", &year);
+    if (year >= 2020 && year <= 2025) {
+        printf("Year is within the valid academic range.\n");
+    } else {
+        printf("Year is NOT within the valid academic range.\n");
+    }
+    return 0;
+}
