@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+    int arr[5]={1,2,3,4,5,5,5};
+    int n=7;
+    int found=0;
+    int c;
+    for(int i=0;i<n;i++)
+    {
+        for (int j=i+1;j<n;j++)
+        {
+            if(arr[i]=arr[j]){
+                printf("%d\n",arr[i]);
+                found=1;
+                c++;
+            }
+        }
+        
+    }
+    printf("%d",c);
+    if(!found){printf("no duplicate");}
+    return 0;
+}
