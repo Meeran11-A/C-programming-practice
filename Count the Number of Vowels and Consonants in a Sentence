@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    char str[200];
+    int i=0, vowels=0, cons=0;
+
+    fgets(str, sizeof(str), stdin);
+
+    while(str[i]) {
+        if((str[i]>='A' && str[i]<='Z') || (str[i]>='a' && str[i]<='z')) {
+            char ch = str[i];
+
+            // convert to lowercase
+            if(ch>='A' && ch<='Z')
+                ch += 32;
+
+            if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+                vowels++;
+            else
+                cons++;
+        }
+        i++;
+    }
+
+    printf("Vowels = %d\nConsonants = %d", vowels, cons);
+
+    return 0;
+}
