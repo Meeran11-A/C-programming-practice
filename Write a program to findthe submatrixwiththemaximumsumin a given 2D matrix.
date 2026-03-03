@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include <limits.h>
+
+#define ROW 4
+#define COL 5
+
+// Function to apply Kadane's algorithm on 1D array
+int kadane(int arr[], int *start, int *finish, int n) {
+    int sum = 0, maxSum = INT_MIN;
+    int local_start = 0;
+
+    *finish = -1;
+
+    for (int i = 0; i < n; i++) {
+        sum += arr[i];
+        if (sum < arr[i]) {
+            sum = arr[i];
+            local_start = i;
+        }
+        if (sum > maxSum) {
+            maxSum = sum;
+            *start = local_start;
+            *finish = i;
+        }
+    }
+
+    if (*finish != -1)
+        return maxSum;
+
+    // If all numbers are negative, find the maximum element
+    maxSum = arr[0];
+    *start = *finish = 0;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > maxSum) {
+            maxSum = arr[i];
+            *start = *finish = i;
+        }
+    }
+    return maxSum;
+}
+
+// Function to find maximum sum submatrix
+void findMaxSumSubmatrix(int M[ROW][COL]) {
+    int left, right, i;
+    int temp[ROW], sum, start, finish;
+    int maxSum = INT_MIN;
+
+    int finalLeft, finalRight, finalTop, finalBottom;
+
+    // Set the left column
+    for (left = 0; left < COL; left++) {
+        // Initialize temp array
+        for (i = 0; i < ROW; i++)
+            temp[i] = 0;
+
+        // Set the right column
+        for (right = left; right < COL; right++) {
+            // Add current column to temp
+            for (i = 0; i < ROW; i++)
+                temp[i] += M[i][right];
+
+            // Find the maximum sum subarray in temp
+            sum = kadane(temp, &start, &finish, ROW);
+
+            if (sum > maxSum) {
+                maxSum = sum;
+                finalLeft = left;
+                finalRight = right;
+                finalTop = start;
+                finalBottom = finish;
+            }
+        }
+    }
+
+    // Print result
+    printf("Maximum sum submatrix:\n");
+    for (i = finalTop; i <= finalBottom; i++) {
+        for (int j = finalLeft; j <= finalRight; j++) {
+            printf("%d ", M[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Maximum Sum = %d\n", maxSum);
+}
+
+int main() {
+    int M[ROW][COL] = {
+        { 1,  2, -1, -4, -20},
+        {-8, -3,  4,  2,   1},
+        { 3,  8, 10,  1,   3},
+        {-4, -1,  1,  7,  -6}
+    };
+
+    findMaxSumSubmatrix(M);
+
+    return 0;
+}
