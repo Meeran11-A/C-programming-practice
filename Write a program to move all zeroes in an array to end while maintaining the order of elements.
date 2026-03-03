@@ -1,0 +1,4 @@
+#include <stdio.h>
+
+void moveZeroes(int arr[], int n) {
+    int count = 0; // Count of non-zero elem
