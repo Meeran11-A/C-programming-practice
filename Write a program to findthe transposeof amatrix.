@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+#define SIZE 3   // Matrix size (3x3 for this example)
+
+int main() {
+    int matrix[SIZE][SIZE] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int transpose[SIZE][SIZE];
+
+    // Compute transpose
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+
+    // Print original matrix
+    printf("Original Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Print transpose matrix
+    printf("\nTranspose Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", transpose[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
