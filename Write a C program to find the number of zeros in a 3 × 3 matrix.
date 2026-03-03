@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+#define SIZE 3
+
+int main() {
+    int matrix[SIZE][SIZE] = {
+        {0, 2, 0},
+        {0, 5, 6},
+        {0, 0, 7}
+    };
+
+    int zeroCount = 0;
+
+    // Count zeros
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (matrix[i][j] == 0) {
+                zeroCount++;
+            }
+        }
+    }
+
+    // Print matrix
+    printf("Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Print result
+    printf("\nNumber of zeros in the matrix: %d\n", zeroCount);
+
+    return 0;
+}
