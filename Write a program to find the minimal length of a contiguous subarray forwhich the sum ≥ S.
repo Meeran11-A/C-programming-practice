@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int minSubArrayLen(int S, int arr[], int n) {
+    int minLen = n + 1;  // Initialize with a large value
+    int sum = 0;
+    int start = 0;
+
+    for (int end = 0; end < n; end++) {
+        sum += arr[end];
+
+        // Shrink the window as small as possible while sum ≥ S
+        while (sum >= S) {
+            int currentLen = end - start + 1;
+            if (currentLen < minLen) {
+                minLen = currentLen;
+            }
+            sum -= arr[start];
+            start++;
+        }
+    }
+
+    return (minLen == n + 1) ? 0 : minLen; // Return 0 if no subarray found
+}
+
+int main() {
+    int arr[] = {2, 3, 1, 2, 4, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int S = 7;
+
+    int result = minSubArrayLen(S, arr, n);
+
+    if (result == 0) {
+        printf("No subarray found with sum ≥ %d\n", S);
+    } else {
+        printf("Minimal length of subarray with sum ≥ %d is: %d\n", S, result);
+    }
+
+    return 0;
+}
