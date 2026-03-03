@@ -1,0 +1,6 @@
+#include<stdio.h>
+
+int main() {
+char str[20]="s ", sub[20];
+int start, length, i;
+scanf("%d", &start);}
