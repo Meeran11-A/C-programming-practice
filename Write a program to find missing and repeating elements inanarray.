@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void findMissingAndRepeating(int arr[], int n) {
+    int count[n+1]; // Extra space to track frequencies
+    for (int i = 0; i <= n; i++) {
+        count[i] = 0;
+    }
+
+    // Count frequencies
+    for (int i = 0; i < n; i++) {
+        count[arr[i]]++;
+    }
+
+    int missing = -1, repeating = -1;
+    for (int i = 1; i <= n; i++) {
+        if (count[i] == 0) {
+            missing = i;
+        } else if (count[i] > 1) {
+            repeating = i;
+        }
+    }
+
+    printf("Repeating element: %d\n", repeating);
+    printf("Missing element: %d\n", missing);
+}
+
+int main() {
+    int arr[] = {4, 3, 6, 2, 1, 1}; // Example array
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    findMissingAndRepeating(arr, n);
+
+    return 0;
+}
