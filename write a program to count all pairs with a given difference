@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int countPairsWithDiff(int arr[], int n, int diff) {
+    int count = 0;
+
+    // Compare each pair
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] - arr[j] == diff || arr[j] - arr[i] == diff) {
+                count++;
+                printf("Pair: (%d, %d)\n", arr[i], arr[j]);
+            }
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    int n, diff;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter elements: ");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter difference: ");
+    scanf("%d", &diff);
+
+    int result = countPairsWithDiff(arr, n, diff);
+    printf("Total pairs with difference %d = %d\n", diff, result);
+
+    return 0;
+}
