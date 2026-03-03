@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+#define SIZE 3   // Matrix size (3x3 for this example)
+
+int main() {
+    int matrix[SIZE][SIZE] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int upper[SIZE][SIZE];
+
+    // Construct upper triangular matrix
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            if (i > j) {
+                upper[i][j] = 0;   // Elements below diagonal set to 0
+            } else {
+                upper[i][j] = matrix[i][j];
+            }
+        }
+    }
+
+    // Print original matrix
+    printf("Original Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Print upper triangular matrix
+    printf("\nUpper Triangular Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", upper[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
