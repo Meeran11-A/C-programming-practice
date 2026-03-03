@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+// Function to find the longest common prefix
+char* longestCommonPrefix(char strs[][100], int n) {
+    static char prefix[100];
+    strcpy(prefix, strs[0]);  // Start with the first string
+
+    for (int i = 1; i < n; i++) {
+        int j = 0;
+        while (prefix[j] && strs[i][j] && prefix[j] == strs[i][j]) {
+            j++;
+        }
+        prefix[j] = '\0';  // Truncate prefix to the matched length
+    }
+
+    return prefix;
+}
+
+int main() {
+    char strs[3][100] = {"flower", "flow", "flight"};
+    int n = 3;
+
+    char* result = longestCommonPrefix(strs, n);
+
+    if (strlen(result) > 0) {
+        printf("Longest Common Prefix: %s\n", result);
+    } else {
+        printf("No common prefix found.\n");
+    }
+
+    return 0;
+}
