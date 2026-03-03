@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+#define SIZE 3   // Matrix size (3x3 for this example)
+
+int main() {
+    int matrix[SIZE][SIZE] = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    int principalSum = 0, secondarySum = 0;
+
+    // Calculate sums
+    for (int i = 0; i < SIZE; i++) {
+        principalSum += matrix[i][i];               // Principal diagonal
+        secondarySum += matrix[i][SIZE - 1 - i];    // Secondary diagonal
+    }
+
+    // Print matrix
+    printf("Matrix:\n");
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Print results
+    printf("\nSum of principal diagonal = %d\n", principalSum);
+    printf("Sum of secondary diagonal = %d\n", secondarySum);
+    printf("Total sum of both diagonals = %d\n", principalSum + secondarySum);
+
+    return 0;
+}
