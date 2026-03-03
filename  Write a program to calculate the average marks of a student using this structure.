@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+struct Student {
+    char name[50];
+    int roll;
+    float m1, m2, m3;
+};
+
+int main() {
+    struct Student s;
+    float avg;
+
+    printf("Enter Name: ");
+    fgets(s.name, sizeof(s.name), stdin);
+
+    printf("Enter Roll Number: ");
+    scanf("%d", &s.roll);
+
+    printf("Enter marks of 3 subjects: ");
+    scanf("%f %f %f", &s.m1, &s.m2, &s.m3);
+
+    avg = (s.m1 + s.m2 + s.m3) / 3;
+
+    printf("\nStudent Details:\n");
+    printf("Name: %s", s.name);
+    printf("Roll No: %d\n", s.roll);
+    printf("Average Marks: %.2f\n", avg);
+
+    return 0;
+}
