@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void copyString(char source[], char destination[]) {
+    int i = 0;
+    while (source[i] != '\0') {
+        destination[i] = source[i];  // Copy each character
+        i++;
+    }
+    destination[i] = '\0';  // Null-terminate the destination string
+}
+
+int main() {
+    char str1[100] = "HELLO";   // Source string
+    char str2[100] = "PYTHON";  // Destination string
+
+    printf("Before copy:\n");
+    printf("String 1: %s\n", str1);
+    printf("String 2: %s\n", str2);
+
+    copyString(str1, str2);  // Copy str1 into str2
+
+    printf("\nAfter copy:\n");
+    printf("String 1: %s\n", str1);
+    printf("String 2: %s\n", str2);
+
+    return 0;
+}
