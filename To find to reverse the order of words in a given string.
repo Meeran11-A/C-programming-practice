@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 100
+
+int main() {
+    char str[MAX];
+    char words[20][20];  // assuming max 20 words, each up to 20 chars
+    int i, j = 0, k = 0, wordCount = 0;
+
+    printf("Enter a string: ");
+    fgets(str, MAX, stdin);
+
+    // Remove newline if present
+    str[strcspn(str, "\n")] = '\0';
+
+    // Split words
+    for (i = 0; str[i] != '\0'; i++) {
+        if (str[i] != ' ') {
+            words[wordCount][j++] = str[i];
+        } else {
+            words[wordCount][j] = '\0';
+            wordCount++;
+            j = 0;
+        }
+    }
+    words[wordCount][j] = '\0';
+    wordCount++;
+
+    // Print words in reverse order
+    printf("Reversed order of words:\n");
+    for (i = wordCount - 1; i >= 0; i--) {
+        printf("%s ", words[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
