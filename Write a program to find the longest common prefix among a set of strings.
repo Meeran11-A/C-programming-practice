@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[3][20] = {"flower", "flow", "flight"};
+    int i, j;
+    char prefix[20];
+
+    for (i = 0; str[0][i] != '\0'; i++) {
+        for (j = 1; j < 3; j++) {
+            if (str[j][i] != str[0][i]) {
+                prefix[i] = '\0';
+                printf("Longest Common Prefix: %s\n", prefix);
+                return 0;
+            }
+        }
+        prefix[i] = str[0][i];
+    }
+
+    prefix[i] = '\0';
+    printf("Longest Common Prefix: %s\n", prefix);
+    return 0;
+}
