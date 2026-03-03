@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+struct Employee {
+    char name[50];
+    int id;
+    float salary;
+};
+
+int main() {
+    struct Employee e;
+
+    printf("Enter Name: ");
+    fgets(e.name, sizeof(e.name), stdin);
+
+    printf("Enter Employee ID: ");
+    scanf("%d", &e.id);
+
+    printf("Enter Salary: ");
+    scanf("%f", &e.salary);
+
+    printf("\nEmployee Details:\n");
+    printf("Name: %s", e.name);
+    printf("ID: %d\n", e.id);
+    printf("Salary: %.2f\n", e.salary);
+
+    return 0;
+}
