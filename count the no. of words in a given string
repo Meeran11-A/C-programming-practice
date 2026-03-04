@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char str[200];
+    int count = 0, inWord = 0;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (isspace(str[i])) {
+            inWord = 0;  // end of a word
+        } else if (inWord == 0) {
+            inWord = 1;  // start of a new word
+            count++;
+        }
+    }
+
+    printf("Number of words = %d\n", count);
+
+    return 0;
+}
