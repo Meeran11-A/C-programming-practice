@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+    int N;
+    printf("Enter the number of rows: ");
+    scanf("%d", &N);
+
+    for (int i = N; i >= 1; i--) {
+        // Print leading spaces
+        for (int space = 0; space < N - i; space++) {
+            printf(" ");
+        }
+        // Print stars
+        for (int star = 0; star < (2 * i - 1); star++) {
+            printf("*");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
