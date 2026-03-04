@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+void compressString(char *str) {
+    int len = strlen(str), i, j, count, index = 0;
+    char compressed[200], countStr[20];
+
+    for (i = 0; i < len;) {
+        char current = str[i];
+        count = 0;
+        while (i < len && str[i] == current) {
+            count++;
+            i++;
+        }
+        compressed[index++] = current;
+        sprintf(countStr, "%d", count);
+        for (j = 0; countStr[j] != '\0'; j++)
+            compressed[index++] = countStr[j];
+    }
+    compressed[index] = '\0';
+
+    if (strlen(compressed) < len)
+        printf("%s\n", compressed);
+    else
+        printf("%s\n", str);
+}
+
+int main() {
+    char str[100];
+    scanf("%s", str);
+    compressString(str);
+    return 0;
+}
