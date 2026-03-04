@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+struct CRM {
+    int customer_id;
+    char interaction_type[50];
+    char interaction_date[20];
+};
+
+int main() {
+    struct CRM customer;
+
+    printf("Enter Customer ID: ");
+    scanf("%d", &customer.customer_id);
+
+    printf("Enter Interaction Type: ");
+    scanf("%s", customer.interaction_type);
+
+    printf("Enter Interaction Date (DD/MM/YYYY): ");
+    scanf("%s", customer.interaction_date);
+
+    printf("\n--- Customer Relationship Management Record ---\n");
+    printf("Customer ID: %d\n", customer.customer_id);
+    printf("Interaction Type: %s\n", customer.interaction_type);
+    printf("Interaction Date: %s\n", customer.interaction_date);
+
+    return 0;
+}
