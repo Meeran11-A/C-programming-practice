@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int N;
+    long long sum = 0;
+
+    printf("Enter N: ");
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        sum += (long long)i * i * i;  // add cube of i
+    }
+
+    printf("Sum of cubes of first %d natural numbers = %lld\n", N, sum);
+
+    return 0;
+}
