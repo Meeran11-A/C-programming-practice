@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+#define MAX 10
+
+// Recursive function to find maximum sum path
+int maxPathSum(int mat[MAX][MAX], int i, int j, int m, int n) {
+    if (i == m - 1 && j == n - 1) {
+        return mat[i][j];  // reached bottom-right
+    }
+
+    if (i == m - 1) {
+        return mat[i][j] + maxPathSum(mat, i, j + 1, m, n);  // only right
+    }
+
+    if (j == n - 1) {
+        return mat[i][j] + maxPathSum(mat, i + 1, j, m, n);  // only down
+    }
+
+    int right = maxPathSum(mat, i, j + 1, m, n);
+    int down  = maxPathSum(mat, i + 1, j, m, n);
+
+    return mat[i][j] + (right > down ? right : down);
+}
+
+int main() {
+    int m, n;
+    int mat[MAX][MAX];
+
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &m, &n);
+
+    printf("Enter matrix elements:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+
+    int result = maxPathSum(mat, 0, 0, m, n);
+    printf("Maximum path sum = %d\n", result);
+
+    return 0;
+}
