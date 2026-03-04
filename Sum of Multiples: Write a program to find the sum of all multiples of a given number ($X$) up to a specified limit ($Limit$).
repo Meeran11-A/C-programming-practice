@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    int X, Limit, sum = 0;
+
+    printf("Enter the number (X): ");
+    scanf("%d", &X);
+
+    printf("Enter the limit: ");
+    scanf("%d", &Limit);
+
+    for (int i = X; i <= Limit; i += X) {
+        sum += i;
+    }
+
+    printf("Sum of multiples of %d up to %d = %d\n", X, Limit, sum);
+
+    return 0;
+}
