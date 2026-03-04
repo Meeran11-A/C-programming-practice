@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    char str[100], ch;
+    char *ptr;
+    int count = 0;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    printf("Enter a character to count: ");
+    scanf(" %c", &ch);  // space before %c to consume newline
+
+    ptr = str;  // pointer to start of string
+
+    while (*ptr != '\0') {
+        if (*ptr == ch) {
+            count++;
+        }
+        ptr++;  // move pointer to next character
+    }
+
+    printf("Character '%c' occurs %d times in \"%s\".\n", ch, count, str);
+
+    return 0;
+}
