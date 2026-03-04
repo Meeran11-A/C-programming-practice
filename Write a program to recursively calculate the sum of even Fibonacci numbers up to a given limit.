@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+// Recursive function to calculate nth Fibonacci number
+int fibonacci(int n) {
+    if (n == 0) return 0;       // base case
+    if (n == 1) return 1;       // base case
+    return fibonacci(n - 1) + fibonacci(n - 2);  // recursive relation
+}
+
+// Recursive function to sum even Fibonacci numbers up to a limit
+int sumEvenFibonacci(int n, int limit) {
+    if (n < 0) return 0;  // safety check
+
+    int fib = fibonacci(n);
+
+    if (fib > limit) {
+        return 0;  // stop when Fibonacci exceeds limit
+    }
+
+    if (fib % 2 == 0) {
+        return fib + sumEvenFibonacci(n + 1, limit);  // include even Fibonacci
+    } else {
+        return sumEvenFibonacci(n + 1, limit);       // skip odd Fibonacci
+    }
+}
+
+int main() {
+    int limit;
+    printf("Enter the limit: ");
+    scanf("%d", &limit);
+
+    int sum = sumEvenFibonacci(0, limit);
+
+    printf("Sum of even Fibonacci numbers up to %d = %d\n", limit, sum);
+
+    return 0;
+}
