@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+    int n, arr[100], pos[100], neg[100];
+    int p = 0, q = 0, i, j = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements: ", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        if (arr[i] >= 0) pos[p++] = arr[i];
+        else neg[q++] = arr[i];
+    }
+
+    int res[100];
+    i = 0; j = 0;
+    int k = 0;
+
+    // Alternate positives and negatives
+    while (i < p && j < q) {
+        res[k++] = pos[i++];
+        res[k++] = neg[j++];
+    }
+
+    // Append remaining positives
+    while (i < p) res[k++] = pos[i++];
+
+    // Append remaining negatives (if any)
+    while (j < q) res[k++] = neg[j++];
+
+    printf("Rearranged array: ");
+    for (i = 0; i < n; i++) printf("%d ", res[i]);
+    printf("\n");
+
+    return 0;
+}
