@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+void factorial(int *num, long long *result) {
+    *result = 1;
+    for (int i = 1; i <= *num; i++) {
+        *result = (*result) * i;  // multiply using pointer dereference
+    }
+}
+
+int main() {
+    int n;
+    long long fact;
+    int *ptr_n = &n;
+    long long *ptr_fact = &fact;
+
+    printf("Enter a number: ");
+    scanf("%d", ptr_n);
+
+    factorial(ptr_n, ptr_fact);
+
+    printf("Factorial of %d = %lld\n", *ptr_n, *ptr_fact);
+
+    return 0;
+}
