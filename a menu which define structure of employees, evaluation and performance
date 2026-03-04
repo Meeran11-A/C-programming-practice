@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 50
+
+struct Employee {
+    int id;
+    char name[50];
+    char evaluation[100];
+    char performance[50];
+};
+
+int main() {
+    struct Employee employees[MAX];
+    int count = 0, choice, i;
+
+    do {
+        printf("\n--- Employee Management Menu ---\n");
+        printf("1. Add Employee\n");
+        printf("2. View Employees\n");
+        printf("3. Update Evaluation & Performance\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                if (count < MAX) {
+                    printf("Enter Employee ID: ");
+                    scanf("%d", &employees[count].id);
+                    printf("Enter Employee Name: ");
+                    scanf("%s", employees[count].name);
+                    strcpy(employees[count].evaluation, "Not Evaluated");
+                    strcpy(employees[count].performance, "Pending");
+                    count++;
+                    printf("Employee added successfully!\n");
+                } else {
+                    printf("Employee limit reached!\n");
+                }
+                break;
+
+            case 2:
+                if (count == 0) {
+                    printf("No employees available.\n");
+                } else {
+                    printf("\n--- Employee Records ---\n");
+                    for (i = 0; i < count; i++) {
+                        printf("ID: %d, Name: %s, Evaluation: %s, Performance: %s\n",
+                               employees[i].id, employees[i].name,
+                               employees[i].evaluation, employees[i].performance);
+                    }
+                }
+                break;
+
+            case 3:
+                if (count == 0) {
+                    printf("No employees to update.\n");
+                } else {
+                    int id, found = 0;
+                    printf("Enter Employee ID to update: ");
+                    scanf("%d", &id);
+                    for (i = 0; i < count; i++) {
+                        if (employees[i].id == id) {
+                            found = 1;
+                            printf("Enter Evaluation: ");
+                            scanf("%s", employees[i].evaluation);
+                            printf("Enter Performance: ");
+                            scanf("%s", employees[i].performance);
+                            printf("Record updated successfully!\n");
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        printf("Employee ID not found.\n");
+                    }
+                }
+                break;
+
+            case 4:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Try again.\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
