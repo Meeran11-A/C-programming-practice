@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+// Define structure
+struct Flight {
+    int flight_number;
+    char passenger_name[50];
+    char departure[50];
+    char destination[50];
+    char flight_date[20];
+};
+
+int main() {
+    struct Flight flight;
+
+    // Input details
+    printf("Enter Flight Number: ");
+    scanf("%d", &flight.flight_number);
+
+    printf("Enter Passenger Name: ");
+    scanf("%s", flight.passenger_name);
+
+    printf("Enter Departure: ");
+    scanf("%s", flight.departure);
+
+    printf("Enter Destination: ");
+    scanf("%s", flight.destination);
+
+    printf("Enter Flight Date (DD/MM/YYYY): ");
+    scanf("%s", flight.flight_date);
+
+    // Display details
+    printf("\n--- Flight Management Record ---\n");
+    printf("Flight Number: %d\n", flight.flight_number);
+    printf("Passenger Name: %s\n", flight.passenger_name);
+    printf("Departure: %s\n", flight.departure);
+    printf("Destination: %s\n", flight.destination);
+    printf("Flight Date: %s\n", flight.flight_date);
+
+    return 0;
+}
