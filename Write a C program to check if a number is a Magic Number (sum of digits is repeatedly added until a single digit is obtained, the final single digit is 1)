@@ -1,0 +1,13 @@
+#include <stdio.h>
+int main() {
+    int n,s,d;
+    scanf("%d",&n);
+    while(n>9){
+        s=0;
+        while(n>0){ d=n%10; s+=d; n/=10; }
+        n=s;
+    }
+    if(n==1) printf("Magic");
+    else printf("Not Magic");
+    return 0;
+}
