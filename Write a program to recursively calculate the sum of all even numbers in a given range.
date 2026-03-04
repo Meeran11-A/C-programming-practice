@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+// Recursive function to calculate sum of even numbers
+int sumEven(int start, int end) {
+    if (start > end) {
+        return 0;  // base case: range exhausted
+    }
+
+    if (start % 2 == 0) {
+        return start + sumEven(start + 1, end);  // include even number
+    } else {
+        return sumEven(start + 1, end);  // skip odd number
+    }
+}
+
+int main() {
+    int start, end;
+
+    printf("Enter start of range: ");
+    scanf("%d", &start);
+
+    printf("Enter end of range: ");
+    scanf("%d", &end);
+
+    printf("Sum of even numbers between %d and %d = %d\n",
+           start, end, sumEven(start, end));
+
+    return 0;
+}
