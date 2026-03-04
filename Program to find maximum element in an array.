@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int findMax(int arr[], int n) {
+    if (n == 1) return arr[0];  
+    int maxRest = findMax(arr, n - 1);
+    return arr[n - 1] > maxRest ? arr[n - 1] : maxRest;
+}
+
+int main() {
+    int n, arr[100];
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    printf("Max element = %d\n", findMax(arr, n));
+    return 0;
+}
