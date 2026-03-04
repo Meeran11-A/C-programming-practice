@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void concatenate(char *str1, char *str2) {
+    // Move pointer to the end of str1
+    while (*str1 != '\0') {
+        str1++;
+    }
+
+    // Copy str2 into str1 starting at the end
+    while (*str2 != '\0') {
+        *str1 = *str2;
+        str1++;
+        str2++;
+    }
+
+    // Add null terminator at the end
+    *str1 = '\0';
+}
+
+int main() {
+    char str1[200], str2[100];
+
+    printf("Enter first string: ");
+    scanf("%s", str1);
+
+    printf("Enter second string: ");
+    scanf("%s", str2);
+
+    concatenate(str1, str2);
+
+    printf("Concatenated string: %s\n", str1);
+
+    return 0;
+}
