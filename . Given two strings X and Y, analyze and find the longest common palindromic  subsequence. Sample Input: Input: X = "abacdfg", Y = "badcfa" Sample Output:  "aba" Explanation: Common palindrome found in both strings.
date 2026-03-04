@@ -1,0 +1,54 @@
+#include <stdio.h> 
+#include <string.h> 
+ 
+#define MAX 100 
+ 
+int main() { 
+    char X[] = "abacdfg"; 
+    char Y[] = "badcfa"; 
+    char lcs[MAX]; 
+ 
+    int m = strlen(X), n = strlen(Y); 
+    int dp[MAX][MAX]; 
+ 
+    // LCS 
+    for(int i=0;i<=m;i++) 
+        for(int j=0;j<=n;j++) 
+            if(i==0||j==0) dp[i][j]=0; 
+            else if(X[i-1]==Y[j-1]) 
+                dp[i][j]=1+dp[i-1][j-1]; 
+            else
+               dp[i][j]=(dp[i-1][j]>dp[i][j-1])? 
+                          dp[i-1][j]:dp[i][j-1]; 
+ 
+    int len=dp[m][n], i=m, j=n; 
+    lcs[len]='\0'; 
+ 
+    while(i>0&&j>0){ 
+        if(X[i-1]==Y[j-1]){ 
+            lcs[--len]=X[i-1]; 
+            i--; j--; 
+        } 
+        else if(dp[i-1][j]>dp[i][j-1]) i--; 
+        else j--; 
+    } 
+ 
+    printf("LCS = %s\n", lcs); 
+ 
+    // Check longest palindrome inside LCS 
+    int max=1; 
+    int L=strlen(lcs); 
+ 
+    for(int i=0;i<L;i++) 
+        for(int j=i;j<L;j++){ 
+            int flag=1;
+                 for(int k=0;k<(j-i+1)/2;k++) 
+                if(lcs[i+k]!=lcs[j-k]) flag=0; 
+            if(flag && j-i+1>max) 
+                max=j-i+1; 
+        } 
+ 
+    printf("Length of LCPS = %d", max); 
+ 
+    return 0; 
+}
